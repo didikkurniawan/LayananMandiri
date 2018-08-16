@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/putih"
+    android:padding="0dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/putih"
+            >
+            <TextView
+                android:id="@+id/textViewRowNama"
+                android:layout_width="100dp"
+                android:textColor="@color/hitam"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="70dp"
+                android:text="Nama" />
+
+            <TextView
+                android:id="@+id/textViewRowAwal"
+                android:textColor="@color/hitam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textViewRowNama"
+                android:layout_toRightOf="@+id/textViewRowNama"
+                android:text="Awal" />
+
+            <TextView
+                android:id="@+id/textViewRowAkhir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/hitam"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Akhir" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
