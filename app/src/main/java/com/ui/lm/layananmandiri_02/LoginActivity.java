@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -20,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,13 +39,77 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonMasuk;
     private ProgressDialog progressDialog;
     private String link;
-    public String desa = "";
+//    public String desa = "";
+
+    AutoCompleteTextView suggestion_box;
+    Spinner items;
+
+    ArrayList<String> namaDesa = new ArrayList<>();
 
    @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        suggestion_box = (AutoCompleteTextView)findViewById(R.id.suggestion_box);
+        items = (Spinner)findViewById(R.id.desaid);
+
+        namaDesa.add("Desa Babakan");
+        namaDesa.add("Desa Banyusari");
+        namaDesa.add("Desa Bandasari");
+        namaDesa.add("Desa Bojongkuncu");
+        namaDesa.add("Desa Bojongmanggu");
+        namaDesa.add("Desa Bumiwangi");
+        namaDesa.add("Desa Cangkuang");
+        namaDesa.add("Desa Ciluncat");
+        namaDesa.add("Desa Cilampeni");
+        namaDesa.add("Desa Cigondewa Hilir");
+        namaDesa.add("Desa Ciheulang");
+        namaDesa.add("Desa Cikoneng");
+        namaDesa.add("Desa Ciparay");
+        namaDesa.add("Desa Gandasari");
+        namaDesa.add("Desa Gunung Leutik");
+        namaDesa.add("Desa Jatisari");
+        namaDesa.add("Desa Katapang");
+        namaDesa.add("Desa Lagadar");
+        namaDesa.add("Desa Langonsari");
+        namaDesa.add("Desa Mekarlaksana");
+        namaDesa.add("Desa Mekarsari");
+        namaDesa.add("Desa Mekarrahayu");
+        namaDesa.add("Desa Manggung Harja");
+        namaDesa.add("Desa Margahayu Tengah");
+        namaDesa.add("Desa Margahayu Selatan");
+        namaDesa.add("Desa Margaasih");
+        namaDesa.add("Desa Nanjung");
+        namaDesa.add("Desa Nagrak");
+        namaDesa.add("Desa Pakutandang");
+        namaDesa.add("Desa Pananjung");
+        namaDesa.add("Desa Pangauban");
+        namaDesa.add("Desa Rahayu");
+        namaDesa.add("Desa Rancamulya");
+        namaDesa.add("Desa Rancatungku");
+        namaDesa.add("Desa Sangkanhurip");
+        namaDesa.add("Desa Sarimahi");
+        namaDesa.add("Desa Sarangmekar");
+        namaDesa.add("Desa Sayati");
+        namaDesa.add("Desa Segaracipta");
+        namaDesa.add("Desa Sukamenak");
+        namaDesa.add("Desa Sukamukti");
+        namaDesa.add("Desa Sukasari");
+        namaDesa.add("Desa Sumbersari");
+        namaDesa.add("Desa Tanjungsari");
+        namaDesa.add("Kelurahan Sulaiman");
+
+
+
+       ArrayAdapter<String> adapter = new ArrayAdapter<String>(LoginActivity.this,android.R.layout.simple_spinner_dropdown_item,namaDesa);
+
+       ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(LoginActivity.this,android.R.layout.simple_spinner_dropdown_item,namaDesa);
+
+       suggestion_box.setAdapter(adapter);
+       items.setAdapter(adapter);
+
 
         if(SharedPreManager.getInstance(this).isLoggedIn()){
             finish();

@@ -1,135 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@android:color/white">-->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity">
-
-        <LinearLayout
-            android:id="@+id/login1"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:orientation="vertical"
-            android:gravity="center">
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="159dp"
-                android:src="@drawable/logodiskominfo"
-                android:layout_gravity="center"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Layanan Mandiri"
-                android:textSize="23dp"
-                android:gravity="center"
-                android:textColor="@color/hitam"
-                android:textStyle="bold"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@drawable/sabilulungan"
+            android:gravity="center" >
+            <LinearLayout
+                android:id="@+id/login1"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="159dp"
+                    android:src="@drawable/logodiskominfo"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Layanan Mandiri"
+                    android:textSize="23dp"
+                    android:gravity="center"
+                    android:textColor="@color/hitam"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/login2"
+                android:layout_below="@+id/login1"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/suggestion_box"
+                    android:completionThreshold="1"
+                    android:hint="Cari Nama Desa"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/desaid"
+                    android:layout_below="@+id/sugesstion_box"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="Desa"
+                    android:backgroundTint="@color/hitam"
+                    android:entries="@array/desa_name">
+                </Spinner>
+                <EditText
+                    android:id="@+id/nikid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/hitam"
+                    android:textColorHint="@color/hitam"
+                    android:drawableStart="@drawable/ic_person_black_24dp"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:drawablePadding="20dp"
+                    android:inputType="number"
+                    android:hint="NIK"/>
+
+
+                <EditText
+                    android:id="@+id/noTknid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/hitam"
+                    android:textColorHint="@color/hitam"
+                    android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
+                    android:drawableLeft="@drawable/ic_remove_red_eye_black_24dp"
+                    android:drawablePadding="20dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:ems="10"/>
+
+                <Button
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/putih"
+                    android:background="@color/colorPrimaryDark"
+                    android:id="@+id/masuktombol"
+                    android:text="Masuk"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/cardview_light_background">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/login2"
-            android:layout_below="@+id/login1"
-            android:orientation="vertical"
-            android:padding="5dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-<!--            <EditText
-                android:id="@+id/desaid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/te_bg"
-                android:textColor="@color/hitam"
-                android:textColorHint="@color/hitam"
-                android:drawableStart="@drawable/ic_person_black_24dp"
-                android:drawableLeft="@drawable/ic_person_black_24dp"
-                android:drawablePadding="20dp"
-                android:hint="desa"/>-->
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Belum punya akun ?"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/hitam"
-                android:text="Silahkan datang atau hubungi operator desa untuk mendapatkan kode PIN anda."/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/hitam"
-                android:textSize="15dp"
-                android:text="Pilih Desa  : "/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/desaid"
-                android:layout_marginTop="15dp"
-                android:contentDescription="Desa"
-                android:backgroundTint="@color/hitam"
-                android:entries="@array/desa_name">
-            </Spinner>
-            <EditText
-                android:id="@+id/nikid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/te_bg"
-                android:textColor="@color/hitam"
-                android:textColorHint="@color/hitam"
-                android:drawableStart="@drawable/ic_person_black_24dp"
-                android:drawableLeft="@drawable/ic_person_black_24dp"
-                android:drawablePadding="20dp"
-                android:inputType="number"
-                android:hint="NIK"/>
-
-
-            <EditText
-                android:id="@+id/noTknid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textColor="@color/hitam"
-                android:background="@drawable/te_bg"
-                android:textColorHint="@color/hitam"
-                android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
-                android:drawableLeft="@drawable/ic_remove_red_eye_black_24dp"
-                android:drawablePadding="20dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:ems="10"/>
-
-            <Button
-                android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/putih"
-                android:background="@drawable/btn_bg"
-                android:id="@+id/masuktombol"
-                android:text="Masuk"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/hitam"
-                android:text="BANTUAN"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginTop="10dp"/>
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Register"
+            android:textColor="@color/ic_launcher_background"
+            android:textSize="20sp" />
         </LinearLayout>
-
     </RelativeLayout>
-</ScrollView>
+
+</RelativeLayout>
+<!--</ScrollView>-->
