@@ -1,4 +1,4 @@
-package com.bagicode.www.bagisliderview._sliders;
+package com.ui.lm.layananmandiri_02._sliders;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bagicode.www.bagisliderview.R;
+import com.ui.lm.layananmandiri_02.R;
 import com.bumptech.glide.Glide;
 
 /**
@@ -39,7 +39,6 @@ public class FragmentSlider extends Fragment {
         ImageView img = (ImageView) view.findViewById(R.id.img);
         Glide.with(getActivity())
                 .load(imageUrls)
-                .placeholder(R.drawable.image_slider_1)
                 .into(img);
         return view;
     }

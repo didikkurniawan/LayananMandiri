@@ -1,52 +1,86 @@
 package com.ui.lm.layananmandiri_02;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.ui.lm.layananmandiri_02._sliders.SliderIndicator;
+import com.ui.lm.layananmandiri_02._sliders.SliderPagerAdapter;
+import com.ui.lm.layananmandiri_02._sliders.SliderView;
+import com.ui.lm.layananmandiri_02._sliders.FragmentSlider;
+import com.ui.lm.layananmandiri_02.model.Artikel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.ui.lm.layananmandiri_02.Constants.URL_ARTIKEL;
+
+public class DashboardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private CardView profilCard, layananCard, laporCard, bantuanCard, keluarCard;
     Toolbar toolbar;
     private TextView textViewUsername, textViewNIK;
+
+    private static final String TAG = "DashboardActivity";
+    BottomNavigationView bottomNavigationView, bottomLogoutView;
+    private SliderPagerAdapter mAdapter;
+    private SliderIndicator mIndicator;
+
+    public SliderView sliderView;
+    public LinearLayout mLinearLayout;
+    public BantuanMain bantuanMain;
+    public ProgressDialog progressDialog;
+    public List<Fragment> fragments = new ArrayList<>();
+    private JsonArrayRequest request;
+    private RequestQueue requestQueue;
+    private List<Artikel> artikelList;
+    private RecyclerView recyclerView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.home:
-//                        Toast.makeText(DashboardActivity.this, "INI HOME", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.home1:
-//                        Toast.makeText(DashboardActivity.this, "INI HOME 1", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.home2:
-//                        Toast.makeText(DashboardActivity.this, "INI HOME 2", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.home3:
-//                        Toast.makeText(DashboardActivity.this, "INI HOME 3", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.home4:
-//                        Toast.makeText(DashboardActivity.this, "INI HOME 4", Toast.LENGTH_SHORT).show();
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        sliderView = (SliderView) findViewById(R.id.sliderView);
+        mLinearLayout = (LinearLayout) findViewById(R.id.pagesContainer);
+        setupSlider();
+
+        artikelList = new ArrayList<>();
+        recyclerView = findViewById(R.id.recyclerViewId);
+        jsonRequest();
         //toolbar
 //        toolbar = (Toolbar) findViewById(R.id.bartool);
 //        setSupportActionBar(toolbar);
@@ -75,18 +109,96 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 //        textViewNIK.setText(SharedPreManager.getInstance(this).getUserNIK());
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent i;
+//    public static String desa1="";
+//
+//    public static void setDesa1(String Desa){
+//        desa1 = Desa;
+//    }
+//    public static String getDesa1(){
+//        return desa1;
+//    }
 
-//        switch(v.getId()){
-//            case R.id.profilId :    i = new Intent(this,ProfilActivity.class); startActivity(i); break;
-//            case R.id.layananid :    i = new Intent(this,LayananMain.class);startActivity(i); break;
-//            case R.id.keluarid : SharedPreManager.getInstance(this).logout();finish();startActivity(new Intent(this, LoginActivity.class));break;
-//            case R.id.laporid : i = new Intent(this,LaporActivity.class);startActivity(i);break;
-//            case R.id.bantuanid : i = new Intent(this, BantuanMain.class);startActivity(i);break;
-//            default:break;
-//        }
+    public void jsonRequest() {
+
+        request = new JsonArrayRequest(SharedPreManager.getInstance(this).getUrl() + URL_ARTIKEL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i=0; i<response.length();i++){
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        Artikel artikel = new Artikel();
+                        artikel.setJudul(jsonObject.getString("judul"));
+                        artikel.setKategori(jsonObject.getString("kategori"));
+                        artikel.setUrl(jsonObject.getString("url"));
+                        artikelList.add(artikel);
+
+                    }catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+                setuprecycleview(artikelList);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+        requestQueue = Volley.newRequestQueue(DashboardActivity.this);
+        requestQueue.add(request);
+    }
+
+    private void setuprecycleview(List<Artikel> artikelList) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this,artikelList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setAdapter(myadapter);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.layanan:
+              Intent newAct = new Intent(this, LayananMain.class);
+                startActivity(newAct);
+                return true;
+            case R.id.bantuan:
+                Intent newAct1 = new Intent(this, BantuanMain.class);
+                startActivity(newAct1);
+                return true;
+            case R.id.home:
+                Intent newAct2 = new Intent(this, DashboardActivity.class);
+                startActivity(newAct2);
+                return true;
+            case R.id.lapor:
+                Intent newAct3 = new Intent(this, LaporActivity.class);
+                startActivity(newAct3);
+                return true;
+            case R.id.account:
+                SharedPreManager.getInstance(this).logout();finish();
+                startActivity(new Intent(this, LoginActivity.class));
+                return true;
+        }
+        Log.i(TAG,"OnNavigationItemSelectedListener:");
+        return true;
+    }
+
+    public static ArrayList<String> list = new ArrayList<String>();
+
+    private void setupSlider() {
+        fragments.add(FragmentSlider.newInstance("http://www.menucool.com/slider/prod/image-slider-3.jpg"));
+        mAdapter = new SliderPagerAdapter(getSupportFragmentManager(), fragments);
+        sliderView.setAdapter(mAdapter);
+        mIndicator = new SliderIndicator(this, mLinearLayout, sliderView, R.drawable.indicator_circle);
+        mIndicator.setPageCount(fragments.size());
+        mIndicator.show();
 
     }
+
 }

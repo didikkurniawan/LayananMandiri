@@ -39,7 +39,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/login2"
                 android:layout_below="@+id/login1"
                 android:orientation="vertical"
@@ -48,12 +48,16 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">
 
-                <AutoCompleteTextView
+                <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/suggestion_box"
-                    android:completionThreshold="1"
-                    android:hint="Cari Nama Desa"/>
+                    android:id="@+id/kecamatanid"
+                    android:layout_below="@+id/sugesstion_box"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="Desa"
+                    android:backgroundTint="@color/hitam"
+                    android:entries="@array/kecamatan_name">
+                </Spinner>
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

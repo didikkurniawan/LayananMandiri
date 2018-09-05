@@ -43,8 +43,8 @@ public class LaporActivity extends AppCompatActivity implements View.OnClickList
         editTextLaporan = (EditText) findViewById(R.id.TkomentarUser);
 
         //Set nama dan nik
-        editTextPengirim.setText(SharedPreManager.getInstance(this).getUserNama());
-        editTextNoNikk.setText(SharedPreManager.getInstance(this).getUserNIK());
+        editTextPengirim.setText(SharedPreManager.getInstance(this).getUserNokk());
+        editTextNoNikk.setText(SharedPreManager.getInstance(this).getUrl());
 
         buttonKirim = (Button) findViewById(R.id.BtnKirim);
 

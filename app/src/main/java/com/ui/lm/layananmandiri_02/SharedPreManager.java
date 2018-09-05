@@ -28,6 +28,7 @@ public class SharedPreManager {
     private static final String KEY_RT = "userrt";
     private static final String KEY_RW = "userrw";
     private static final String KEY_NOKK = "usernokk";
+    private static final String KEY_URL = "url";
 
 
     private SharedPreManager(Context context) {
@@ -42,7 +43,10 @@ public class SharedPreManager {
         return mInstance;
     }
 
-    public boolean userLogin(int id, String nik, String nama, String tanggallahir, String tempatlahir, String dusun, String agama, String pekerjaaan, String pendidikan, String pendidikankk, String status, String gender, String warganegara, String rt,String rw, String nokk) {
+    public boolean userLogin(int id, String nik, String nama, String tanggallahir,
+                             String tempatlahir, String dusun, String agama, String pekerjaaan,
+                             String pendidikan, String pendidikankk, String status, String gender,
+                             String warganegara, String rt,String rw, String nokk,String url) {
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -63,6 +67,7 @@ public class SharedPreManager {
         editor.putString(KEY_RT, rt);
         editor.putString(KEY_RW, rw);
         editor.putString(KEY_NOKK, nokk);
+        editor.putString(KEY_URL, url);
 
         editor.apply();
 
@@ -165,6 +170,10 @@ public class SharedPreManager {
     public String getUserNokk() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_NOKK, null);
+    }
+    public String getUrl() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_URL, null);
     }
 
 }

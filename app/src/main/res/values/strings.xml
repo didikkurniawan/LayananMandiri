@@ -1,50 +1,57 @@
 <resources>
     <string name="app_name">LayananMandiri_02</string>
+    <string-array name="kecamatan_name">
+        <item>Kecamatan Margahayu</item>
+        <item>Kecamatan Soreang</item>
+        <item>Kecamatan Bandasari</item>
+    </string-array>
     <string-array name="desa_name">
-        <item>Desa Babakan</item>
-        <item>Desa Banyusari</item>
-        <item>Desa Bandasari</item>
-        <item>Desa Bojongkuncu</item>
-        <item>Desa Bojongmanggu</item>
-        <item>Desa Bumiwangi</item>
-        <item>Desa Cangkuang</item>
-        <item>Desa Ciluncat</item>
-        <item>Desa Cilampeni</item>
-        <item>Desa Cigondewa Hilir</item>
-        <item>Desa Ciheulang</item>
-        <item>Desa Cikoneng</item>
-        <item>Desa Ciparay</item>
-        <item>Desa Gandasari</item>
-        <item>Desa Gunung Leutik</item>
-        <item>Desa Jatisari</item>
-        <item>Desa Katapang</item>
-        <item>Desa Lagadar</item>
-        <item>Desa Langonsari</item>
-        <item>Desa Mekarlaksana</item>
-        <item>Desa Mekarsari</item>
-        <item>Desa Mekarrahayu</item>
-        <item>Desa Manggung Harja</item>
-        <item>Desa Margahayu Tengah</item>
-        <item>Desa Margahayu Selatan</item>
-        <item>Desa Margaasih</item>
-        <item>Desa Nanjung</item>
-        <item>Desa Nagrak</item>
-        <item>Desa Pakutandang</item>
-        <item>Desa Pananjung</item>
-        <item>Desa Pangauban</item>
-        <item>Desa Rahayu</item>
-        <item>Desa Rancamulya</item>
-        <item>Desa Rancatungku</item>
-        <item>Desa Sangkanhurip</item>
-        <item>Desa Sarimahi</item>
-        <item>Desa Sarangmekar</item>
-        <item>Desa Sayati</item>
-        <item>Desa Segaracipta</item>
-        <item>Desa Sukamenak</item>
-        <item>Desa Sukamukti</item>
+        <!--<item>Desa Babakan</item>-->
+        <!--<item>Desa Banyusari</item>-->
+        <!--<item>Desa Bandasari</item>-->
+        <!--<item>Desa Bojongkuncu</item>-->
+        <!--<item>Desa Bojongmanggu</item>-->
+        <!--<item>Desa Bumiwangi</item>-->
+        <!--<item>Desa Cangkuang</item>-->
+        <!--<item>Desa Ciluncat</item>-->
+        <!--<item>Desa Cilampeni</item>-->
+        <!--<item>Desa Cigondewa Hilir</item>-->
+        <!--<item>Desa Ciheulang</item>-->
+        <!--<item>Desa Cikoneng</item>-->
+        <!--<item>Desa Ciparay</item>-->
+        <!--<item>Desa Gandasari</item>-->
+        <!--<item>Desa Gunung Leutik</item>-->
+        <!--<item>Desa Jatisari</item>-->
+        <!--<item>Desa Katapang</item>-->
+        <!--<item>Desa Lagadar</item>-->
+        <!--<item>Desa Langonsari</item>-->
+        <!--<item>Desa Mekarlaksana</item>-->
+        <!--<item>Desa Mekarsari</item>-->
+        <!--<item>Desa Mekarrahayu</item>-->
+        <!--<item>Desa Manggung Harja</item>-->
+        <!--<item>Desa Margahayu Tengah</item>-->
+        <!--<item>Desa Margahayu Selatan</item>-->
+        <!--<item>Desa Margaasih</item>-->
+        <!--<item>Desa Nanjung</item>-->
+        <!--<item>Desa Nagrak</item>-->
+        <!--<item>Desa Pakutandang</item>-->
+        <!--<item>Desa Pananjung</item>-->
+        <!--<item>Desa Pangauban</item>-->
+        <!--<item>Desa Rahayu</item>-->
+        <!--<item>Desa Rancamulya</item>-->
+        <!--<item>Desa Rancatungku</item>-->
+        <!--<item>Desa Sangkanhurip</item>-->
+        <!--<item>Desa Sarimahi</item>-->
+        <!--<item>Desa Sarangmekar</item>-->
+        <!--<item>Desa Sayati</item>-->
+        <!--<item>Desa Segaracipta</item>-->
+        <!--<item>Desa Sukamenak</item>-->
+        <!--<item>Desa Sukamukti</item>-->
         <item>Desa Sukasari</item>
         <item>Desa Sumbersari</item>
         <item>Desa Tanjungsari</item>
         <item>Kelurahan Sulaiman</item>
     </string-array>
+
+
 </resources>

@@ -2,6 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/layanan"
+        android:icon="@drawable/layanan"
+        android:title="Layanan"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/lapor"
+        android:icon="@drawable/lapor"
+        android:title="Lapor"
+        app:showAsAction="ifRoom"/>
+
     <item
         android:id="@+id/home"
         android:icon="@drawable/home"
@@ -9,25 +22,13 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/home1"
-        android:icon="@drawable/home"
-        android:title="Layanan"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/home2"
-        android:icon="@drawable/home"
+        android:id="@+id/bantuan"
+        android:icon="@drawable/bantuan"
         android:title="Bantuan"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/home3"
-        android:icon="@drawable/home"
-        android:title="Lapor"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/home4"
+        android:id="@+id/account"
         android:icon="@drawable/ic_person_pin_black_24dp"
         android:title="Account"
         app:showAsAction="ifRoom"/>

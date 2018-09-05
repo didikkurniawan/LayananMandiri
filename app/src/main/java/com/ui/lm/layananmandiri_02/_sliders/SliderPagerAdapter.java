@@ -1,4 +1,4 @@
-package com.bagicode.www.bagisliderview._sliders;
+package com.ui.lm.layananmandiri_02._sliders;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

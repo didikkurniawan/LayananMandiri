@@ -11,10 +11,13 @@ public class Constants {
     public static final String URL_BANTUAN = ROOT_URL+"userBantuan.php";
     public static final String URL_LAYANAN = ROOT_URL+"userLayanan.php";*/
     private static String ROOT_URL = "";
+
+    public static final String URL_ARTIKEL = "/api_desa/get_artikel";
     public static final String URL_LOGIN = "/api_desa/get_login";
     public static final String URL_LAPOR = "/api_desa/post_laporan";
     public static final String URL_BANTUAN = "/api_desa/get_bantuan";
     public static final String URL_LAYANAN = "/api_desa/get_layanan";
+    public static final String URL_SLIDE = "/api_desa/get_slide";
 
     public void setDesa(String desa){
         this.ROOT_URL = desa;
