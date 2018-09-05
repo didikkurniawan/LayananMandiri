@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         itemDesa = (Spinner)findViewById(R.id.desaid);
 
 //        Digunakaan untuk menambahkan alamat kecamatan
-        String[] kecamatan = {"Kecamatan Soreang","Kecamatan Margahayu"};
+        String[] kecamatan = {"-- Pilih Kecamatan --","Kecamatan Soreang","Kecamatan Margahayu"};
         final String[] margahayu = {"Desa Margahayu Tengah","Desa Margahayu Selatan"};
 
         for(int i = 0;i<kecamatan.length;i++) {
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
        itemKecamatan.setAdapter(adapterKecamatan);
 
 
-
+       namaDesa.add("-- Pilih Desa --");
        itemKecamatan.setOnItemSelectedListener(new OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -102,7 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                            namaDesa.add(margahayu[i]);
                    }
                }
-
 
                ArrayAdapter<String> adapterDesa = new ArrayAdapter<String>(LoginActivity.this,android.R.layout.simple_spinner_dropdown_item,namaDesa);
                itemDesa.setAdapter(adapterDesa);
@@ -117,6 +116,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
        });
+
+
 
 
 
