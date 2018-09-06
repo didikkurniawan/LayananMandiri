@@ -2,12 +2,16 @@ package com.ui.lm.layananmandiri_02;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,16 +32,18 @@ import java.util.Map;
 import static com.ui.lm.layananmandiri_02.Constants.URL_BANTUAN;
 import static com.ui.lm.layananmandiri_02.Constants.URL_LAYANAN;
 
-public class BantuanMain extends AppCompatActivity {
+public class BantuanMain extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     private Constants cons;
     private RecyclerView mRecyclerView;
     private BantuanAdapter rvAdapter;
     Toolbar toolbar;
     private RecyclerView.LayoutManager mLayoutManager;
+    private static final String TAG = "BantuanMain";
     /*private Context context = BantuanMain.this;*/
 
     private List<Bantuan> bantuanList = new ArrayList<Bantuan>();
     private ProgressDialog pDialog;
+    BottomNavigationView bottomNavigationView, bottomLogoutView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +51,13 @@ public class BantuanMain extends AppCompatActivity {
         setContentView(R.layout.bantuan_main);
 
         //toolbar
-        toolbar = (Toolbar) findViewById(R.id.bartool);
-        setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.typetoolbar);
+//        toolbar = (Toolbar) findViewById(R.id.bartool);
+//        setSupportActionBar(toolbar);
+//        toolbar.setLogo(R.drawable.typetoolbar);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.bantuan);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -62,16 +71,6 @@ public class BantuanMain extends AppCompatActivity {
     private void gambarDatakeRecyclerView(){
         rvAdapter = new BantuanAdapter(bantuanList);
         mRecyclerView.setAdapter(rvAdapter);
-    }
-
-
-    public static String desa="";
-
-    public static void setDesa(String Desa){
-        desa = Desa;
-    }
-    public static String getDesa(){
-        return desa;
     }
 
     //ambil data sever volley
@@ -88,7 +87,7 @@ public class BantuanMain extends AppCompatActivity {
                 getApplicationContext(),
                 desa, Toast.LENGTH_LONG).show();
         finish();*/
-        StringRequest postRequest = new StringRequest(Request.Method.POST, desa + URL_BANTUAN,
+        StringRequest postRequest = new StringRequest(Request.Method.POST,SharedPreManager.getInstance(this).getUrl() + URL_BANTUAN,
 
 //        StringRequest postRequest = new StringRequest(Request.Method.POST, URL_BANTUAN,
                 new Response.Listener<String>() {
@@ -154,6 +153,37 @@ public class BantuanMain extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.layanan:
+                Intent newAct = new Intent(this, LayananMain.class);
+                startActivity(newAct);
+                return true;
+            case R.id.bantuan:
+                Intent newAct1 = new Intent(this, BantuanMain.class);
+                startActivity(newAct1);
+                return true;
+            case R.id.home:
+                Intent newAct2 = new Intent(this, DashboardActivity.class);
+                startActivity(newAct2);
+                return true;
+            case R.id.lapor:
+                Intent newAct3 = new Intent(this, LaporActivity.class);
+                startActivity(newAct3);
+                return true;
+            case R.id.account:
+                SharedPreManager.getInstance(this).logout();
+                Intent newAct4 = new Intent(this, LoginActivity.class);
+                newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(newAct4);
+                finish();
+                return true;
+        }
+        Log.i(TAG,"OnNavigationItemSelectedListener:");
+        return true;
     }
 
 }

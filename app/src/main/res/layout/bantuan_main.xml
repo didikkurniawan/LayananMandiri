@@ -1,46 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/activity_dashboard"
     android:layout_height="match_parent"
-    tools:context="com.ui.lm.layananmandiri_02.DashboardActivity">
+    tools:context=".BantuanMain"
+    android:background="@android:color/darker_gray">
 
-
-    <LinearLayout
-        android:id="@+id/form_login"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/layout_top"
-        android:background="@android:color/white">
-        <android.support.v7.widget.RecyclerView
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/recyclerViewId">
-
-
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
-
-
+    <include layout="@layout/bantuan_content" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/contaier"
         android:layout_alignParentTop="true"
         android:background="@color/putih">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="10dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,12 +31,12 @@
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"
                 android:text="Bantuan Pemerintah"
                 android:textSize="20sp" />
         </LinearLayout>
     </FrameLayout>
-
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"

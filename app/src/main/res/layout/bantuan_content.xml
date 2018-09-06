@@ -4,55 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/putih"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="@android:color/darker_gray"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/bantuan_main"
+    android:paddingTop="50dp"
+    android:paddingRight="10dp"
     >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_dark_background"
-        android:id="@+id/rltvheader">
-        <TextView
-            android:paddingLeft="10dp"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Nama"
-            android:id="@+id/textViewRowNama"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Awal"
-            android:id="@+id/textViewRowAwal"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="80dp"
-            android:layout_toRightOf="@+id/textViewRowNama"
-            android:layout_toEndOf="@+id/textViewRowNama" />
-
-        <TextView
-            android:id="@+id/textViewRowAkhir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="30dp"
-            android:text="Akhir" />
-    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_below="@+id/rltvheader"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:paddingTop="50dp"/>
 
 </RelativeLayout>

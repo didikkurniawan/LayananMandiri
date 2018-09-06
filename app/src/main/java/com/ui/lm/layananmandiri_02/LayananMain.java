@@ -69,16 +69,6 @@ public class LayananMain extends AppCompatActivity implements BottomNavigationVi
         mRecyclerView.setAdapter(rvAdapter);
     }
 
-    public static String desa2="";
-
-    public static void setDesa2(String Desa){
-        desa2 = Desa;
-    }
-    public static String getDesa2(){
-        return desa2;
-    }
-
-
     //ambil data sever volley
     private void loadDataServerVolley(){
         final String nik2 = SharedPreManager.getInstance(this).getUserNIK();

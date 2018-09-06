@@ -46,7 +46,6 @@ public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.BantuanV
         TextView bantuanEdate;
         BantuanViewHolder(View itemView) {
             super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
             bantuanNama = (TextView) itemView.findViewById(R.id.textViewRowNama);
             bantuanSdate = (TextView) itemView.findViewById(R.id.textViewRowAwal);
             bantuanEdate = (TextView) itemView.findViewById(R.id.textViewRowAkhir);

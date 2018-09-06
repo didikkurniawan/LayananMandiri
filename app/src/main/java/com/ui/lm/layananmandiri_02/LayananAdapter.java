@@ -48,7 +48,6 @@ public class LayananAdapter extends RecyclerView.Adapter<LayananAdapter.LayananV
         TextView LayananTanggal;
         LayananViewHolder(View itemView) {
             super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
             LayananNomorSurat = (TextView) itemView.findViewById(R.id.textViewNomorSurat);
             LayananJenisSurat = (TextView) itemView.findViewById(R.id.textViewJenisSurat);
 //            LayananNamaStaff = (TextView) itemView.findViewById(R.id.textViewNamaStaff);
