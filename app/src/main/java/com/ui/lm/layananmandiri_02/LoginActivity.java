@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         itemDesa = (Spinner)findViewById(R.id.desaid);
 
 //        Digunakaan untuk menambahkan alamat kecamatan
-        String[] kecamatan = {"-- Pilih Kecamatan --","Kecamatan Soreang","Kecamatan Margahayu"};
+        String[] kecamatan = {"-- Pilih Kecamatan --","Kecamatan Margahayu","Kecamatan Ciparay"};
         final String[] margahayu = {"Desa Margahayu Tengah","Desa Margahayu Selatan"};
 
         for(int i = 0;i<kecamatan.length;i++) {
@@ -130,12 +130,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String pilih = String.valueOf((editTextDesa.getSelectedItem()));
 
         if(pilih=="Desa Margahayu Tengah"){
-            this.url = "http://margahayutengah.desa.id";
+            this.url = "http://margahayutengah.desa.id/";
         }else{
             Toast.makeText(
                     getApplicationContext(),
                     "Kesalahan pada URL",
                     Toast.LENGTH_LONG).show();
+            finish();
         }
 
         progressDialog.show();
@@ -218,6 +219,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view == buttonMasuk){
             userLogin();
         }
+    }
+
+    private static long back_pressed;
+
+    @Override
+    public void onBackPressed()
+    {
+        if (back_pressed + 2000 > System.currentTimeMillis()) super.onBackPressed();
+        back_pressed = System.currentTimeMillis();
+        finish();
+
     }
 
 }

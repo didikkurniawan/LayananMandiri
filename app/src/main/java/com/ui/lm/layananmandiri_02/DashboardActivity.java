@@ -81,42 +81,7 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
         artikelList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerViewId);
         jsonRequest();
-        //toolbar
-//        toolbar = (Toolbar) findViewById(R.id.bartool);
-//        setSupportActionBar(toolbar);
-//        toolbar.setLogo(R.drawable.typetoolbar);
-
-        //Pendefinisian Card
-//        profilCard = (CardView) findViewById(R.id.profilId);
-//        layananCard = (CardView) findViewById(R.id.layananid);
-//        laporCard = (CardView) findViewById(R.id.laporid);
-//        bantuanCard = (CardView) findViewById(R.id.bantuanid);
-//        keluarCard = (CardView) findViewById(R.id.keluarid);
-//
-//        //Menambahkan Click Listener pada Card
-//        profilCard.setOnClickListener(this);
-//        laporCard.setOnClickListener(this);
-//        layananCard.setOnClickListener(this);
-//        laporCard.setOnClickListener(this);
-//        bantuanCard.setOnClickListener(this);
-//        keluarCard.setOnClickListener(this);
-//
-//        //Pendefinisian tulisan username dan NIk user
-//        textViewNIK = (TextView) findViewById(R.id.textnik);
-//        textViewUsername = (TextView) findViewById(R.id.textuser);
-//
-//        textViewUsername.setText(SharedPreManager.getInstance(this).getUserNama());
-//        textViewNIK.setText(SharedPreManager.getInstance(this).getUserNIK());
     }
-
-//    public static String desa1="";
-//
-//    public static void setDesa1(String Desa){
-//        desa1 = Desa;
-//    }
-//    public static String getDesa1(){
-//        return desa1;
-//    }
 
     public void jsonRequest() {
 
@@ -181,8 +146,11 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
                 startActivity(newAct3);
                 return true;
             case R.id.account:
-                SharedPreManager.getInstance(this).logout();finish();
-                startActivity(new Intent(this, LoginActivity.class));
+                SharedPreManager.getInstance(this).logout();
+                Intent newAct4 = new Intent(this, LoginActivity.class);
+                newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(newAct4);
+                finish();
                 return true;
         }
         Log.i(TAG,"OnNavigationItemSelectedListener:");

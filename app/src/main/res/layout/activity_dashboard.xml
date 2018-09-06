@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_top"
-        android:background="@android:color/white">
+        android:background="@android:color/darker_gray">
         <!--<ScrollView-->
             <!--android:id="@+id/scroll_view"-->
             <!--android:layout_width="match_parent"-->

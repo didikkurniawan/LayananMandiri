@@ -1,50 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/activity_dashboard"
     android:layout_height="match_parent"
-    tools:context=".BantuanMain"
-    android:background="@color/putih">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/bartool"
+    tools:context="com.ui.lm.layananmandiri_02.DashboardActivity">
+
+
+    <LinearLayout
+        android:id="@+id/form_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_top"
+        android:background="@android:color/white">
+        <android.support.v7.widget.RecyclerView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/recyclerViewId">
+
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/hitam"
-        app:theme="@style/ThemeOverlay.AppCompat.Light"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
->
+        android:id="@+id/contaier"
+        android:layout_alignParentTop="true"
+        android:background="@color/putih">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daftar Bantuan Yang Diterima (Sasaran Perorangan)"
-        android:layout_gravity="center"
-        android:textColor="@color/hitam"
-        android:padding="10dp"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/back"/>
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Bantuan Pemerintah"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </FrameLayout>
 
 
-</LinearLayout>
-    <include layout="@layout/bantuan_content" />
-
-
-<!--    <android.support.design.widget.AppBarLayout
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/primary_text_dark"
-        android:theme="@style/AppTheme.AppBarOverlay">
-&lt;!&ndash;        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/cardview_dark_background"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />&ndash;&gt;
-
-    </android.support.design.widget.AppBarLayout>-->
-
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/putih"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:menu="@menu/navigation"/>
+</RelativeLayout>

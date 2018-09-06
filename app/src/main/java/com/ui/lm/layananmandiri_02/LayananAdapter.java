@@ -25,7 +25,7 @@ public class LayananAdapter extends RecyclerView.Adapter<LayananAdapter.LayananV
     public void onBindViewHolder(LayananViewHolder layananViewHolder, int i) {
         layananViewHolder.LayananNomorSurat.setText(layanans.get(i).getNomorSurat());
         layananViewHolder.LayananJenisSurat.setText(layanans.get(i).getJenisSurat());
-        layananViewHolder.LayananNamaStaff.setText(layanans.get(i).getNamaStaff());
+//        layananViewHolder.LayananNamaStaff.setText(layanans.get(i).getNamaStaff());
         layananViewHolder.LayananTanggal.setText(layanans.get(i).getTanggal());
     }
     @Override
@@ -44,14 +44,14 @@ public class LayananAdapter extends RecyclerView.Adapter<LayananAdapter.LayananV
         CardView cv;
         TextView LayananNomorSurat;
         TextView LayananJenisSurat;
-        TextView LayananNamaStaff;
+//        TextView LayananNamaStaff;
         TextView LayananTanggal;
         LayananViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
             LayananNomorSurat = (TextView) itemView.findViewById(R.id.textViewNomorSurat);
             LayananJenisSurat = (TextView) itemView.findViewById(R.id.textViewJenisSurat);
-            LayananNamaStaff = (TextView) itemView.findViewById(R.id.textViewNamaStaff);
+//            LayananNamaStaff = (TextView) itemView.findViewById(R.id.textViewNamaStaff);
             LayananTanggal   = (TextView) itemView.findViewById(R.id.textViewTanggalLayanan);
         }
     }

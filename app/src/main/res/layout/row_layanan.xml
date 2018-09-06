@@ -1,75 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/putih"
-    android:padding="0dp">
+    android:layout_height="150dp"
+    android:orientation="horizontal"
+    android:layout_marginTop="5dp"
+    android:padding="8dp"
+    android:background="#fff">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/layanan_surat"
+        android:id="@+id/thumnail"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/putih"
-            android:padding="1dp">
+            android:id="@+id/textViewJenisSurat"
+            android:text="Nama Surat"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
 
-            <TextView
-                android:id="@+id/textViewNomorSurat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="20dp"
-                android:text="No Surat"
-                android:textSize="12sp"
-                android:textColor="@color/hitam" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNomorSurat"
+            android:text="Nomot Surat"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTanggalLayanan"
+            android:text="Tanggal Surat"/>
 
-            <TextView
-                android:id="@+id/textViewJenisSurat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textViewNomorSurat"
-                android:layout_toRightOf="@+id/textViewNomorSurat"
-                android:layout_marginRight="5dp"
-                android:text="Jenis Surat"
-                android:textSize="12sp"
-                android:textColor="@color/hitam" />
-
-            <TextView
-                android:id="@+id/textViewNamaStaff"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textViewJenisSurat"
-                android:layout_toRightOf="@+id/textViewJenisSurat"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="20dp"
-                android:text="Nama Staff"
-                android:textSize="12sp"
-                android:textColor="@color/hitam" />
-
-            <TextView
-                android:id="@+id/textViewTanggalLayanan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textViewNamaStaff"
-                android:layout_toRightOf="@+id/textViewNamaStaff"
-                android:text="Tanggal"
-                android:textSize="12sp"
-                android:textColor="@color/hitam" />
-
-
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </LinearLayout>
