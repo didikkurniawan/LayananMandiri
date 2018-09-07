@@ -156,6 +156,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 return true;
             case R.id.home:
                 Intent newAct2 = new Intent(this, DashboardActivity.class);
+                newAct2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(newAct2);
                 return true;
             case R.id.lapor:

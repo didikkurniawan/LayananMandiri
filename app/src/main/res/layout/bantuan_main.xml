@@ -20,13 +20,6 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:layout_marginTop="10dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/back"/>
-
             <TextView
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
