@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +45,7 @@ import java.util.List;
 
 import static com.ui.lm.layananmandiri_02.Constants.URL_ARTIKEL;
 
-public class DashboardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private CardView profilCard, layananCard, laporCard, bantuanCard, keluarCard;
     Toolbar toolbar;
     private TextView textViewUsername, textViewNIK;
@@ -52,6 +54,7 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
     BottomNavigationView bottomNavigationView, bottomLogoutView;
     private SliderPagerAdapter mAdapter;
     private SliderIndicator mIndicator;
+    private ImageView buttonLogout;
 
     public SliderView sliderView;
     public LinearLayout mLinearLayout;
@@ -81,6 +84,10 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
         artikelList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerViewId);
         jsonRequest();
+
+        buttonLogout = (ImageView) findViewById(R.id.buttonLogout);
+
+        buttonLogout.setOnClickListener(this);
     }
 
     public void jsonRequest() {
@@ -126,6 +133,16 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
         recyclerView.setAdapter(myadapter);
     }
 
+    public void onClick(View v) {
+        if (v == buttonLogout){
+            SharedPreManager.getInstance(this).logout();
+            Intent newAct4 = new Intent(this, LoginActivity.class);
+            newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(newAct4);
+            finish();
+        }
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -146,9 +163,7 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
                 startActivity(newAct3);
                 return true;
             case R.id.account:
-                SharedPreManager.getInstance(this).logout();
-                Intent newAct4 = new Intent(this, LoginActivity.class);
-                newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Intent newAct4 = new Intent(this, ProfilActivity.class);
                 startActivity(newAct4);
                 finish();
                 return true;
@@ -167,6 +182,14 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
         mIndicator.setPageCount(fragments.size());
         mIndicator.show();
 
+    }
+
+    private static long back_pressed;
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis()) super.onBackPressed();
+        back_pressed = System.currentTimeMillis();
+        finish();
     }
 
 }

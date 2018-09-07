@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -30,10 +32,11 @@ import java.util.Map;
 
 import static com.ui.lm.layananmandiri_02.Constants.URL_LAYANAN;
 
-public class LayananMain extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class LayananMain extends AppCompatActivity implements View.OnClickListener ,BottomNavigationView.OnNavigationItemSelectedListener {
     private RecyclerView mRecyclerView;
     private LayananAdapter rvAdapter;
     private LoginActivity LgAk;
+    private ImageView buttonLogout;
     private Layanan layanan;
     Toolbar toolbar;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -43,14 +46,11 @@ public class LayananMain extends AppCompatActivity implements BottomNavigationVi
     private List<Layanan> layananList = new ArrayList<Layanan>();
     private ProgressDialog pDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layanan_main);
-        //toolbar
-//        toolbar = (Toolbar) findViewById(R.id.bartool);
-//        setSupportActionBar(toolbar);
-//        toolbar.setLogo(R.drawable.typetoolbar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.layanan);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -61,6 +61,9 @@ public class LayananMain extends AppCompatActivity implements BottomNavigationVi
         mRecyclerView.setLayoutManager(mLayoutManager);
         pDialog = new ProgressDialog(this);
         loadDataServerVolley();
+        buttonLogout = (ImageView) findViewById(R.id.buttonLogout);
+
+        buttonLogout.setOnClickListener(this);
     }
 
 
@@ -72,15 +75,7 @@ public class LayananMain extends AppCompatActivity implements BottomNavigationVi
     //ambil data sever volley
     private void loadDataServerVolley(){
         final String nik2 = SharedPreManager.getInstance(this).getUserNIK();
-
-
-
-         /*String url = "http://192.168.1.64/android_php/v1/userLayanan.php";*/
-        pDialog.setMessage("Retieve Data Layanan    ...");
         showDialog();
-         /*layanan = new Layanan();*/
-
-
         StringRequest postRequest = new StringRequest(Request.Method.POST, SharedPreManager.getInstance(this).getUrl()+ URL_LAYANAN,
                 new Response.Listener<String>() {
                     @Override
@@ -147,6 +142,15 @@ public class LayananMain extends AppCompatActivity implements BottomNavigationVi
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
+    public void onClick(View v) {
+        if (v == buttonLogout){
+            SharedPreManager.getInstance(this).logout();
+            Intent newAct4 = new Intent(this, LoginActivity.class);
+            newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(newAct4);
+            finish();
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -168,14 +172,20 @@ public class LayananMain extends AppCompatActivity implements BottomNavigationVi
                 startActivity(newAct3);
                 return true;
             case R.id.account:
-                SharedPreManager.getInstance(this).logout();
-                Intent newAct4 = new Intent(this, LoginActivity.class);
-                newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Intent newAct4 = new Intent(this, ProfilActivity.class);
                 startActivity(newAct4);
                 finish();
                 return true;
         }
         Log.i(TAG,"OnNavigationItemSelectedListener:");
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent newAct2 = new Intent(this, DashboardActivity.class);
+        newAct2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(newAct2);
+        finish();
     }
 }

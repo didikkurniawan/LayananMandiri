@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,13 +34,14 @@ import java.util.Map;
 import static com.ui.lm.layananmandiri_02.Constants.URL_BANTUAN;
 import static com.ui.lm.layananmandiri_02.Constants.URL_LAYANAN;
 
-public class BantuanMain extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class BantuanMain extends AppCompatActivity implements View.OnClickListener ,BottomNavigationView.OnNavigationItemSelectedListener{
     private Constants cons;
     private RecyclerView mRecyclerView;
     private BantuanAdapter rvAdapter;
     Toolbar toolbar;
     private RecyclerView.LayoutManager mLayoutManager;
     private static final String TAG = "BantuanMain";
+    private ImageView buttonLogout;
     /*private Context context = BantuanMain.this;*/
 
     private List<Bantuan> bantuanList = new ArrayList<Bantuan>();
@@ -50,11 +53,6 @@ public class BantuanMain extends AppCompatActivity implements BottomNavigationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bantuan_main);
 
-        //toolbar
-//        toolbar = (Toolbar) findViewById(R.id.bartool);
-//        setSupportActionBar(toolbar);
-//        toolbar.setLogo(R.drawable.typetoolbar);
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bantuan);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -65,6 +63,9 @@ public class BantuanMain extends AppCompatActivity implements BottomNavigationVi
         mRecyclerView.setLayoutManager(mLayoutManager);
         pDialog = new ProgressDialog(this);
         loadDataServerVolley();
+        buttonLogout = (ImageView) findViewById(R.id.buttonLogout);
+
+        buttonLogout.setOnClickListener(this);
 
     }
 
@@ -76,21 +77,8 @@ public class BantuanMain extends AppCompatActivity implements BottomNavigationVi
     //ambil data sever volley
     private void loadDataServerVolley(){
         final String peserta = SharedPreManager.getInstance(this).getUserNIK();
-
-        /*String url = "http://192.168.1.64/android_php/v1/userBantuan.php";*/
-
-        pDialog.setMessage("Retieve Data Barang...");
-        showDialog();
-       /* cons = new Constants();*/
-       /* String url = cons.getDesa();*/
-       /* Toast.makeText(
-                getApplicationContext(),
-                desa, Toast.LENGTH_LONG).show();
-        finish();*/
         StringRequest postRequest = new StringRequest(Request.Method.POST,SharedPreManager.getInstance(this).getUrl() + URL_BANTUAN,
-
-//        StringRequest postRequest = new StringRequest(Request.Method.POST, URL_BANTUAN,
-                new Response.Listener<String>() {
+            new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("MainActivity","response:"+response);
@@ -134,8 +122,8 @@ public class BantuanMain extends AppCompatActivity implements BottomNavigationVi
                 /*objectbarang.setId(obj.getString("id"));*/
 
                 objectbantuan.setNama(obj.getString("nama"));
-                objectbantuan.setSdate(obj.getString("sdate"));
-                objectbantuan.setEdate(obj.getString("edate"));
+                objectbantuan.setSdate("Dari : " + obj.getString("sdate"));
+                objectbantuan.setEdate("Sampai : " + obj.getString("edate"));
 
                 bantuanList.add(objectbantuan);
             }
@@ -154,7 +142,15 @@ public class BantuanMain extends AppCompatActivity implements BottomNavigationVi
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
-
+    public void onClick(View v) {
+        if (v == buttonLogout){
+            SharedPreManager.getInstance(this).logout();
+            Intent newAct4 = new Intent(this, LoginActivity.class);
+            newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(newAct4);
+            finish();
+        }
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -175,15 +171,21 @@ public class BantuanMain extends AppCompatActivity implements BottomNavigationVi
                 startActivity(newAct3);
                 return true;
             case R.id.account:
-                SharedPreManager.getInstance(this).logout();
-                Intent newAct4 = new Intent(this, LoginActivity.class);
-                newAct4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Intent newAct4 = new Intent(this, ProfilActivity.class);
                 startActivity(newAct4);
                 finish();
                 return true;
         }
         Log.i(TAG,"OnNavigationItemSelectedListener:");
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent newAct2 = new Intent(this, DashboardActivity.class);
+        newAct2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(newAct2);
+        finish();
     }
 
 }

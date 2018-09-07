@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,15 +7,6 @@
     android:orientation="vertical"
     android:background="@color/putih"
     tools:context=".LaporActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/bartool"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/hitam"
-        android:textAlignment="center"
-        android:layout_marginBottom="20dp"
-        app:theme="@style/ThemeOverlay.AppCompat.Light" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,17 +17,16 @@
                 android:id="@+id/tps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/te_bg"
+                android:layout_marginTop="70dp"
                 android:orientation="vertical"
                 android:paddingLeft="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Silahkan laporkan perubahan data kependudukan anda."
+                    android:text="Kirim saran dan kritik anda demi kemajuan desa."
                     android:textColor="@color/hitam" />
 
                 <LinearLayout
@@ -52,7 +38,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pengirim     :"
+                        android:text="Pengirim"
                         android:textColor="@color/hitam"
                         android:textColorHint="@color/putih"
                         android:textSize="13sp"
@@ -63,10 +49,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/te_bg"
                         android:fontFamily="sans-serif-light"
                         android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -79,7 +64,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nik               :"
+                        android:text="Nik"
                         android:textColor="@color/hitam"
                         android:textColorHint="@color/putih"
                         android:textSize="13sp"
@@ -90,10 +75,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/te_bg"
                         android:fontFamily="sans-serif-light"
                         android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -110,20 +94,14 @@
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/te_bg">
 
                         <EditText
                             android:id="@+id/TkomentarUser"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="150dp"
                             android:fontFamily="sans-serif-light"
                             android:textColor="#000000"
                             android:textSize="15dp" />
-                    </LinearLayout>
                 </LinearLayout>
 
                 <Button
@@ -132,13 +110,62 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/btn_bg"
+                    android:background="@color/cardview_dark_background"
                     android:text="Kirim"
                     android:textColor="@color/putih"/>
             </LinearLayout>
 
 
     </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/contaier"
+        android:layout_alignParentTop="true"
+        android:background="@color/putih">
+        <LinearLayout
+            android:id="@+id/headerLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/back"/>
 
-</LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                android:text="Lapor"
+                android:textSize="20sp" />
+
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/logout"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/buttonLogout"/>
+    </FrameLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/putih"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:menu="@menu/navigation"/>
+
+</RelativeLayout>

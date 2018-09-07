@@ -36,6 +36,14 @@
                 android:text="Bantuan Pemerintah"
                 android:textSize="20sp" />
         </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/logout"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/buttonLogout"/>
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
