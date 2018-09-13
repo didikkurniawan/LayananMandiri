@@ -482,7 +482,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"
-                android:text="Lapor"
+                android:text="Profil Pengguna"
                 android:textSize="20sp" />
 
 
