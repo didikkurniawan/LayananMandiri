@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String[] majalaya = {"Desa Biru","Desa Bojong Majalaya","Desa Majakerta","Desa Majalaya","Desa Majasetra","Desa Neglasari Majalaya","Desa Padamulya",
                                     "Desa Padaulun","Desa Sukamaju Majalaya","Desa Sukamukti Majalaya","Desa Wangisagara"};
         final String[] rancaekek ={"Desa Bojongloa","Desa Bojongsalam","Desa Cangkuang Rancaekek","Desa Haurpugur","Desa Jelegong","Desa Linggar","Desa Nanjung Mekar",
-                "Desa Rancaekek Kulon","Desa Rancaekek Wetan","Desa Sangiang","Desa Sukamanah Rancaekek","Desa Sukamulya","Desa Tegal Sumedang","Kelurahan Kencana"};
+                                    "Desa Rancaekek Kulon","Desa Rancaekek Wetan","Desa Sangiang","Desa Sukamanah Rancaekek","Desa Sukamulya","Desa Tegal Sumedang","Kelurahan Kencana"};
         final String[] cicalengka = {"Desa Babakan Peuteuy","Desa Cicalengka Kulon","Desa Cicalengka Wetan","Desa Cikuya","Desa Dampit","Desa Margaasih Cicalengka"
                                      ,"Desa Nagrog","Desa Narawita","Desa Panenjoan","Desa Tanjungwangi Cicalengka","Desa Tenjolaya","Desa Waluya"};
         final String[] cileunyi = {"Desa Cibiru Hilir","Desa Cibiru Wetan","Desa Cileunyi Kulon","Desa Cileunyi Wetan","Desa Cimekar","Desa Cinunuk"};
